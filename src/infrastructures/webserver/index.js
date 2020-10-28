@@ -1,9 +1,14 @@
 import express from "express";
+import secure from "express-force-https";
+import cors from "cors";
+
 import config from "../../config/env";
 import errorHandler from "./errorHandler";
 
 module.exports = (router) => {
   const app = express();
+
+  app.use(secure).use(cors());
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));

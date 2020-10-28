@@ -4,12 +4,17 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _express = _interopRequireDefault(require("express"));
 
+var _expressForceHttps = _interopRequireDefault(require("express-force-https"));
+
+var _cors = _interopRequireDefault(require("cors"));
+
 var _env = _interopRequireDefault(require("../../config/env"));
 
 var _errorHandler = _interopRequireDefault(require("./errorHandler"));
 
 module.exports = function (router) {
   var app = (0, _express["default"])();
+  app.use(_expressForceHttps["default"]).use((0, _cors["default"])());
   app.use(_express["default"].json());
   app.use(_express["default"].urlencoded({
     extended: false
