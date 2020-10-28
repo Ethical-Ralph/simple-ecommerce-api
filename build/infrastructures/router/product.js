@@ -23,11 +23,8 @@ var productRouter = function productRouter(_ref) {
       deleteProductController = _controller.deleteProductController;
 
   var router = (0, _express.Router)();
-  router.route("/").get(getAllProductController).post( // isAdmin,
-  createProductController);
-  router.route("/:productId").get(getProductController).patch( // isAdmin,
-  updateProductController)["delete"]( // isAdmin,
-  deleteProductController);
+  router.route("/").get(getAllProductController).post(_isAdmin["default"], createProductController);
+  router.route("/:productId").get(getProductController).patch(_isAdmin["default"], updateProductController)["delete"](_isAdmin["default"], deleteProductController);
   return router;
 };
 

@@ -11,6 +11,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _error = _interopRequireDefault(require("../../module/error"));
+
 var getProduct = function getProduct(_ref) {
   var productRepository = _ref.productRepository;
   return /*#__PURE__*/function () {
@@ -32,7 +34,7 @@ var getProduct = function getProduct(_ref) {
                 break;
               }
 
-              throw new Error("Product not found");
+              throw _error["default"].NotFoundError("Product not found");
 
             case 6:
               return _context.abrupt("return", {

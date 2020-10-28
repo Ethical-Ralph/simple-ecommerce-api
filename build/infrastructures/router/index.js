@@ -39,13 +39,11 @@ var routerFunc = function routerFunc(_ref) {
   apiRouter.use("/auth", (0, _user["default"])({
     userRepository: userRepository
   }));
-  apiRouter.use("/product", // auth(userRepository),
-  (0, _product["default"])({
+  apiRouter.use("/product", (0, _auth["default"])(userRepository), (0, _product["default"])({
     productRepository: productRepository,
     categoryRepository: categoryRepository
   }));
-  apiRouter.use("/category", // auth(userRepository),
-  (0, _category["default"])({
+  apiRouter.use("/category", (0, _auth["default"])(userRepository), (0, _category["default"])({
     categoryRepository: categoryRepository
   }));
   router.use("/api", apiRouter);

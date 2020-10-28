@@ -10,18 +10,20 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _env = _interopRequireDefault(require("../../../config/env"));
 
+var _error = _interopRequireDefault(require("../../../module/error"));
+
 var getToken = function getToken(req) {
   var authorization = req.headers.authorization;
 
   if (typeof authorization === "undefined" || !authorization) {
-    throw new Error("Auth token missing");
+    throw _error["default"].AuthorizationError("Auth token missing");
   }
 
   if (authorization && authorization.split(" ") === "Bearer" || "Token") {
     return authorization.split(" ")[1];
   }
 
-  throw new Error("Auth token malformed");
+  throw _error["default"].AuthorizationError("Auth token malformed");
 };
 
 var auth = function auth(userRepository) {
@@ -47,7 +49,7 @@ var auth = function auth(userRepository) {
                 break;
               }
 
-              throw Error("User Doesnt't Exist");
+              throw ECustomError.AuthorizationError("User Doesnt't Exist");
 
             case 9:
               req.user = user;

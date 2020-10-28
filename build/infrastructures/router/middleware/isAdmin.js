@@ -11,6 +11,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _error = _interopRequireDefault(require("../../../module/error"));
+
 // from a role collection maybe
 var adminRoles = ["admin", "superadmin"];
 
@@ -32,7 +34,7 @@ var isAdmin = /*#__PURE__*/function () {
             return _context.abrupt("return", next());
 
           case 4:
-            throw new Error("Unauthorized, only admins can access this functionality");
+            throw _error["default"].ForbiddenError("Unauthorized, only admins can access this functionality");
 
           case 7:
             _context.prev = 7;

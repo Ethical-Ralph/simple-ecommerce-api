@@ -13,6 +13,8 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _category = _interopRequireDefault(require("../../validators/category"));
 
+var _error = _interopRequireDefault(require("../../module/error"));
+
 var createCategory = function createCategory(_ref) {
   var categoryRepository = _ref.categoryRepository;
   return /*#__PURE__*/function () {
@@ -37,7 +39,7 @@ var createCategory = function createCategory(_ref) {
                 break;
               }
 
-              throw new Error("A category with this name already exists");
+              throw _error["default"].ConflictError("A category with this name already exists");
 
             case 7:
               _context.next = 9;

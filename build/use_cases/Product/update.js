@@ -13,6 +13,8 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _product = _interopRequireDefault(require("../../validators/product"));
 
+var _error = _interopRequireDefault(require("../../module/error"));
+
 var updateProduct = function updateProduct(_ref) {
   var productRepository = _ref.productRepository,
       categoryRepository = _ref.categoryRepository;
@@ -38,7 +40,7 @@ var updateProduct = function updateProduct(_ref) {
               }
 
               console.log(exist, productId);
-              throw new Error("Product with this id doesn't exist");
+              throw _error["default"].NotFoundError("Product with this id doesn't exist");
 
             case 9:
               categories = productData.categories;

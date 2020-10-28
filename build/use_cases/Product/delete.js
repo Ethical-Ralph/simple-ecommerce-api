@@ -11,6 +11,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _error = _interopRequireDefault(require("../../module/error"));
+
 var deleteProduct = function deleteProduct(_ref) {
   var productRepository = _ref.productRepository;
   return /*#__PURE__*/function () {
@@ -32,7 +34,7 @@ var deleteProduct = function deleteProduct(_ref) {
                 break;
               }
 
-              throw new Error("Product with this id doesn't exist");
+              throw _error["default"].NotFoundError("Product with this id doesn't exist");
 
             case 6:
               _context.next = 8;

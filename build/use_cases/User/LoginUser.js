@@ -19,6 +19,8 @@ var _password = _interopRequireDefault(require("../../module/password"));
 
 var _token = _interopRequireDefault(require("../../module/token"));
 
+var _error = _interopRequireDefault(require("../../module/error"));
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -44,7 +46,7 @@ var loginUser = function loginUser(userRepository) {
                 break;
               }
 
-              throw Error("User isn't registered");
+              throw _error["default"].AuthorizationError("User isn't registered");
 
             case 7:
               if (_password["default"].compareHash(user.password, data.password)) {
@@ -52,7 +54,7 @@ var loginUser = function loginUser(userRepository) {
                 break;
               }
 
-              throw Error("Invalid email or password");
+              throw _error["default"].AuthorizationError("Invalid email or password");
 
             case 9:
               tokenData = {

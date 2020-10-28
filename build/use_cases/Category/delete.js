@@ -11,6 +11,8 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _error = _interopRequireDefault(require("../../module/error"));
+
 var deleteCategory = function deleteCategory(_ref) {
   var categoryRepository = _ref.categoryRepository;
   return /*#__PURE__*/function () {
@@ -32,7 +34,7 @@ var deleteCategory = function deleteCategory(_ref) {
                 break;
               }
 
-              throw new Error("Category with this id doesn't exist");
+              throw _error["default"].NotFoundError("Category with this id doesn't exist");
 
             case 6:
               _context.next = 8;

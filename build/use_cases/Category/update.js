@@ -13,6 +13,8 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _category = _interopRequireDefault(require("../../validators/category"));
 
+var _error = _interopRequireDefault(require("../../module/error"));
+
 var updateCategory = function updateCategory(_ref) {
   var categoryRepository = _ref.categoryRepository;
   return /*#__PURE__*/function () {
@@ -36,7 +38,7 @@ var updateCategory = function updateCategory(_ref) {
                 break;
               }
 
-              throw new Error("Category with this id doesn't exist");
+              throw _error["default"].NotFoundError("Category with this id doesn't exist");
 
             case 8:
               data.id = categoryId;
