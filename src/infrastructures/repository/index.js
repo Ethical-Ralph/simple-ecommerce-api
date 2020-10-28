@@ -1,4 +1,5 @@
-import error from "../../module/error";
+import CustomError from "../../module/error";
+import isValidId from "../../module/isValidId";
 
 module.exports = (Model) => {
   const add = async (data) => {
@@ -8,13 +9,28 @@ module.exports = (Model) => {
   };
 
   const update = (data) => {
-    return Model.findByIdAndUpdate(data.id, {
-      ...data,
-    }).exec();
+    try {
+      const id = data.id;
+      if (!isValidId(id)) {
+        throw CustomError.ValidationError("Invalid Id");
+      }
+      return Model.findByIdAndUpdate(id, {
+        ...data,
+      }).exec();
+    } catch (error) {
+      throw error;
+    }
   };
 
   const remove = (id) => {
-    return Model.findByIdAndRemove(id).exec();
+    try {
+      if (!isValidId(id)) {
+        throw CustomError.ValidationError("Invalid Id");
+      }
+      return Model.findByIdAndRemove(id).exec();
+    } catch (error) {
+      throw error;
+    }
   };
 
   const getProducts = ({ limit, page }) => {
@@ -25,7 +41,14 @@ module.exports = (Model) => {
   };
 
   const findById = (id) => {
-    return Model.findById(id).exec();
+    try {
+      if (!isValidId(id)) {
+        throw CustomError.ValidationError("Invalid Id");
+      }
+      return Model.findById(id).exec();
+    } catch (error) {
+      throw error;
+    }
   };
 
   const findBy = (query) => {
@@ -43,7 +66,9 @@ module.exports = (Model) => {
           categoryName: categories[i],
         });
         if (!categoryExist) {
-          throw error.NotFoundError(`Category ${categories[i]} doesn't exist`);
+          throw CustomError.NotFoundError(
+            `Category ${categories[i]} doesn't exist`
+          );
         }
       }
     } catch (error) {
