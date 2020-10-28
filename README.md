@@ -2,6 +2,8 @@
 
 mock ecommerce api
 
+live at [https://simple-ecommerce-mock.herokuapp.com/api/docs](http://simple-ecommerce-mock.herokuapp.com/api/docs)
+
 A Basic set of APIs that simulates an “**E Commerce Platform**”,
 
 functionalities
@@ -20,7 +22,6 @@ functionalities
   **Products**
 
   - Pagination
-  - sorting and filtering
 
 ## Authentication and Session Management
 
