@@ -14,7 +14,6 @@ var config = {
     dev: process.env.MONGODB_DEV_URL,
     test: process.env.MONGODB_TEST_URL
   },
-  PORT: 3000,
   JWTSecret: process.env.JWTSecret,
   nodeEnv: process.env.NODE_ENV
 };
