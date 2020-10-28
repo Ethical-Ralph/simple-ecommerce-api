@@ -1,3 +1,5 @@
+import error from "../../module/error";
+
 module.exports = (Model) => {
   const add = async (data) => {
     const newData = new Model(data);
@@ -41,7 +43,7 @@ module.exports = (Model) => {
           categoryName: categories[i],
         });
         if (!categoryExist) {
-          throw Error(`Category ${categories[i]} doesn't exist`);
+          throw error.NotFoundError(`Category ${categories[i]} doesn't exist`);
         }
       }
     } catch (error) {

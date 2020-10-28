@@ -1,3 +1,5 @@
+import CustomError from "../module/error";
+
 const validate = (schema, data) => {
   try {
     const { value, error } = schema.validate(data);
@@ -7,7 +9,7 @@ const validate = (schema, data) => {
     return value;
   } catch (error) {
     const err = error.message;
-    throw new Error(err);
+    throw CustomError.ValidationError(err);
   }
 };
 

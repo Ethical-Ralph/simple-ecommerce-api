@@ -1,4 +1,5 @@
 import categoryValidator from "../../validators/category";
+import CustomError from "../../module/error";
 
 const updateCategory = ({ categoryRepository }) => async ({
   categoryData,
@@ -9,7 +10,7 @@ const updateCategory = ({ categoryRepository }) => async ({
 
     const exist = await categoryRepository.findById(categoryId);
     if (!exist) {
-      throw new Error("Category with this id doesn't exist");
+      throw CustomError.NotFoundError("Category with this id doesn't exist");
     }
 
     data.id = categoryId;

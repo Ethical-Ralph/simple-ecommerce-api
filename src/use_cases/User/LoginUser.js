@@ -1,6 +1,7 @@
 import userValidator from "../../validators/user";
 import password from "../../module/password";
 import Token from "../../module/token";
+import CustomError from "../../module/error";
 
 const loginUser = (userRepository) => async (userData) => {
   try {
@@ -8,11 +9,11 @@ const loginUser = (userRepository) => async (userData) => {
 
     const user = await userRepository.findByEmail(data.email);
     if (!user) {
-      throw Error("User isn't registered");
+      throw CustomError.AuthorizationError("User isn't registered");
     }
 
     if (!password.compareHash(user.password, data.password)) {
-      throw Error("Invalid email or password");
+      throw CustomError.AuthorizationError("Invalid email or password");
     }
 
     const tokenData = {

@@ -98,7 +98,7 @@
               "$ref": "#/definitions/Category"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -127,7 +127,7 @@
               "$ref": "#/definitions/Category"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -167,7 +167,7 @@
               "$ref": "#/definitions/Category"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -183,7 +183,7 @@
           "200": {
             "description": "Category deleted succcessful"
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -219,7 +219,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -249,7 +249,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -278,7 +278,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -308,7 +308,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -325,7 +325,7 @@
           "200": {
             "description": "product deleted succcessful"
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {

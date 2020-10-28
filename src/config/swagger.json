@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "simple-ecommerce-mock.herokuapp.com",
+  "host": "localhost:3000",
   "basePath": "/api",
 
   "tags": [
@@ -91,6 +91,13 @@
       "get": {
         "tags": ["Category"],
         "description": "Get all category",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          }
+        ],
         "responses": {
           "200": {
             "description": "category fetched successfully",
@@ -98,7 +105,7 @@
               "$ref": "#/definitions/Category"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -110,6 +117,11 @@
         "tags": ["Category"],
         "description": "Adds a new category",
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          },
           {
             "name": "Category",
             "in": "body",
@@ -127,7 +139,7 @@
               "$ref": "#/definitions/Category"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -138,6 +150,11 @@
     },
     "/category/{categoryId}": {
       "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "description": "Auth token - `Bearer {token}`"
+        },
         {
           "name": "categoryId",
           "in": "path",
@@ -150,6 +167,11 @@
         "tags": ["Category"],
         "description": "Updates a category",
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          },
           {
             "name": "category",
             "in": "body",
@@ -167,7 +189,7 @@
               "$ref": "#/definitions/Category"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -177,13 +199,20 @@
       },
       "delete": {
         "tags": ["Category"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          }
+        ],
         "description": "Deletes a category",
         "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "Category deleted succcessful"
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -197,6 +226,11 @@
         "tags": ["Products"],
         "description": "Get all products",
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          },
           {
             "name": "limit",
             "in": "query",
@@ -219,7 +253,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -232,6 +266,11 @@
 
         "description": "Adds a new product",
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          },
           {
             "name": "product",
             "in": "body",
@@ -249,7 +288,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -261,6 +300,11 @@
     "/product/{productId}": {
       "parameters": [
         {
+          "name": "Authorization",
+          "in": "header",
+          "description": "Auth token - `Bearer {token}`"
+        },
+        {
           "name": "productId",
           "in": "path",
           "required": true,
@@ -270,6 +314,13 @@
       ],
       "get": {
         "tags": ["Products"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          }
+        ],
         "description": "Get product with given ID",
         "responses": {
           "200": {
@@ -278,7 +329,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -291,6 +342,11 @@
         "description": "Updates a product",
 
         "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          },
           {
             "name": "product",
             "in": "body",
@@ -308,7 +364,7 @@
               "$ref": "#/definitions/Product"
             }
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {
@@ -318,14 +374,20 @@
       },
       "delete": {
         "tags": ["Products"],
-
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Auth token - `Bearer {token}`"
+          }
+        ],
         "description": "Deletes a product",
         "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "product deleted succcessful"
           },
-          "403": {
+          "  401": {
             "description": "You do not have necessary permissions for the resource"
           },
           "500": {

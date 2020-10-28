@@ -1,6 +1,7 @@
 import userValidator from "../../validators/user";
 import passwordModule from "../../module/password";
 import tokenModule from "../../module/token";
+import CustomError from "../../module/error";
 
 const createUser = (userRepository) => async (userData) => {
   try {
@@ -8,7 +9,7 @@ const createUser = (userRepository) => async (userData) => {
 
     const exist = await userRepository.findByEmail(data.email);
     if (exist) {
-      throw Error("A user is registered with this email");
+      throw CustomError.ConflictError("A user is registered with this email");
     }
     const userPassword = data.password;
     data.password = passwordModule.hashPassword(userPassword);

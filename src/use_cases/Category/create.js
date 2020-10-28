@@ -1,4 +1,5 @@
 import categoryValidator from "../../validators/category";
+import CustomError from "../../module/error";
 
 const createCategory = ({ categoryRepository }) => async (categoryData) => {
   try {
@@ -9,7 +10,9 @@ const createCategory = ({ categoryRepository }) => async (categoryData) => {
     });
 
     if (exist) {
-      throw new Error("A category with this name already exists");
+      throw CustomError.ConflictError(
+        "A category with this name already exists"
+      );
     }
 
     const category = await categoryRepository.add(data);

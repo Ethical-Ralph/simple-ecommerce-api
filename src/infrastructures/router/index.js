@@ -26,13 +26,13 @@ const routerFunc = ({
 
   apiRouter.use(
     "/product",
-    // auth(userRepository),
+    auth(userRepository),
     productRouter({ productRepository, categoryRepository })
   );
 
   apiRouter.use(
     "/category",
-    // auth(userRepository),
+    auth(userRepository),
     categoryRouter({
       categoryRepository,
     })

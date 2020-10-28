@@ -1,3 +1,5 @@
+import CustomError from "../../../module/error";
+
 // from a role collection maybe
 const adminRoles = ["admin", "superadmin"];
 
@@ -7,7 +9,9 @@ const isAdmin = async (req, res, next) => {
     if (adminRoles.includes(userRole)) {
       return next();
     }
-    throw new Error("Unauthorized, only admins can access this functionality");
+    throw CustomError.ForbiddenError(
+      "Unauthorized, only admins can access this functionality"
+    );
   } catch (error) {
     next(error);
   }

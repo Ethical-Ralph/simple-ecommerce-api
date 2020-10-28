@@ -1,4 +1,5 @@
 import productValidator from "../../validators/product";
+import CustomError from "../../module/error";
 
 const updateProduct = ({ productRepository, categoryRepository }) => async ({
   productData,
@@ -10,7 +11,7 @@ const updateProduct = ({ productRepository, categoryRepository }) => async ({
     const exist = await productRepository.findById(productId);
     if (!exist) {
       console.log(exist, productId);
-      throw new Error("Product with this id doesn't exist");
+      throw CustomError.NotFoundError("Product with this id doesn't exist");
     }
 
     let categories = productData.categories;
