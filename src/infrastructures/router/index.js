@@ -1,4 +1,5 @@
 import express from "express";
+import secure from "express-force-https";
 import userRouter from "./user";
 import productRouter from "./product";
 import categoryRouter from "./category";
@@ -17,6 +18,8 @@ const routerFunc = ({
 }) => {
   const router = express.Router();
   const apiRouter = express.Router();
+
+  router.use(secure);
 
   apiRouter.use(cors()).use(bodyParser.json());
 

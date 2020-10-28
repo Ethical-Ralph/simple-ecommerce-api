@@ -9,6 +9,8 @@ exports["default"] = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
+var _expressForceHttps = _interopRequireDefault(require("express-force-https"));
+
 var _user = _interopRequireDefault(require("./user"));
 
 var _product = _interopRequireDefault(require("./product"));
@@ -34,6 +36,7 @@ var routerFunc = function routerFunc(_ref) {
 
   var apiRouter = _express["default"].Router();
 
+  router.use(_expressForceHttps["default"]);
   apiRouter.use((0, _cors["default"])()).use(_bodyParser["default"].json());
   apiRouter.use("/docs", _swaggerUiExpress["default"].serve, _swaggerUiExpress["default"].setup(_swagger["default"]));
   apiRouter.use("/auth", (0, _user["default"])({
