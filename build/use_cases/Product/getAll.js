@@ -14,7 +14,7 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 var getProducts = function getProducts(_ref) {
   var productRepository = _ref.productRepository;
   return /*#__PURE__*/function () {
-    var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(meta) {
+    var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(meta, categories) {
       var products, count;
       return _regenerator["default"].wrap(function _callee$(_context) {
         while (1) {
@@ -22,12 +22,12 @@ var getProducts = function getProducts(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return productRepository.getProducts(meta);
+              return productRepository.getProducts(meta, categories);
 
             case 3:
               products = _context.sent;
               _context.next = 6;
-              return productRepository.count();
+              return productRepository.countProduct(categories);
 
             case 6:
               count = _context.sent;
@@ -38,6 +38,7 @@ var getProducts = function getProducts(_ref) {
                   metaData: {
                     currentPage: Number(meta.page),
                     limit: Number(meta.limit),
+                    totalDocuments: count,
                     totalPages: Math.ceil(count / meta.limit)
                   }
                 }
@@ -56,7 +57,7 @@ var getProducts = function getProducts(_ref) {
       }, _callee, null, [[0, 10]]);
     }));
 
-    return function (_x) {
+    return function (_x, _x2) {
       return _ref2.apply(this, arguments);
     };
   }();

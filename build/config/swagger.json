@@ -298,6 +298,13 @@
             "description": "Page to fetch",
             "type": "Number",
             "example": 1
+          },
+          {
+            "name": "categories",
+            "in": "query",
+            "description": "categories to fetch - seperate with comma",
+            "type": "Number",
+            "example": "Shoe"
           }
         ],
         "responses": {

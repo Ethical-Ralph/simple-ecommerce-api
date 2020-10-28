@@ -34,40 +34,39 @@ var auth = function auth(userRepository) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              console.log(req.headers);
-              _context.prev = 1;
+              _context.prev = 0;
               token = getToken(req);
               decoded = _jsonwebtoken["default"].verify(token, _env["default"].JWTSecret);
-              _context.next = 6;
+              _context.next = 5;
               return userRepository.findByEmail(decoded.email);
 
-            case 6:
+            case 5:
               user = _context.sent;
 
               if (user) {
-                _context.next = 9;
+                _context.next = 8;
                 break;
               }
 
               throw _error["default"].AuthorizationError("User Doesnt't Exist");
 
-            case 9:
+            case 8:
               req.user = user;
               next();
-              _context.next = 16;
+              _context.next = 15;
               break;
 
-            case 13:
-              _context.prev = 13;
-              _context.t0 = _context["catch"](1);
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](0);
               next(_context.t0);
 
-            case 16:
+            case 15:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 13]]);
+      }, _callee, null, [[0, 12]]);
     }));
 
     return function (_x, _x2, _x3) {

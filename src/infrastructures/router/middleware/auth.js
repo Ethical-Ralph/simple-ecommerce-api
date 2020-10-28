@@ -16,7 +16,6 @@ const getToken = (req) => {
 };
 
 const auth = (userRepository) => async (req, res, next) => {
-  console.log(req.headers);
   try {
     const token = getToken(req);
 

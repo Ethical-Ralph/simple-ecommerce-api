@@ -92,19 +92,19 @@ var productContoller = function productContoller(_ref) {
     }(),
     getAllProductController: function () {
       var _getAllProductController = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res, next) {
-        var _req$query, _req$query$page, page, _req$query$limit, limit, product;
+        var _req$query, _req$query$page, page, _req$query$limit, limit, categories, product;
 
         return _regenerator["default"].wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
-                _req$query = req.query, _req$query$page = _req$query.page, page = _req$query$page === void 0 ? 1 : _req$query$page, _req$query$limit = _req$query.limit, limit = _req$query$limit === void 0 ? 10 : _req$query$limit;
+                _req$query = req.query, _req$query$page = _req$query.page, page = _req$query$page === void 0 ? 1 : _req$query$page, _req$query$limit = _req$query.limit, limit = _req$query$limit === void 0 ? 10 : _req$query$limit, categories = _req$query.categories;
                 _context3.next = 4;
                 return getAllProductUsecase({
                   page: page,
                   limit: limit
-                });
+                }, categories);
 
               case 4:
                 product = _context3.sent;

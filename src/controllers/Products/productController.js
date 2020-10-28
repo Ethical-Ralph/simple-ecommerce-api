@@ -29,12 +29,15 @@ const productContoller = ({
   },
   getAllProductController: async (req, res, next) => {
     try {
-      const { page = 1, limit = 10 } = req.query;
+      const { page = 1, limit = 10, categories } = req.query;
 
-      const product = await getAllProductUsecase({
-        page,
-        limit,
-      });
+      const product = await getAllProductUsecase(
+        {
+          page,
+          limit,
+        },
+        categories
+      );
       return response.success(res, product, 200);
     } catch (error) {
       next(error);

@@ -33,8 +33,11 @@ module.exports = (Model) => {
     }
   };
 
-  const getProducts = ({ limit, page }) => {
-    return Model.find()
+  const getProducts = ({ limit, page }, categories_) => {
+    const query = categories_
+      ? { categories: { $in: categories_.split(",") } }
+      : {};
+    return Model.find(query)
       .limit(Number(limit))
       .skip(Number((page - 1) * limit))
       .exec();
@@ -84,8 +87,11 @@ module.exports = (Model) => {
     return Model.deleteMany({}).exec();
   };
 
-  const count = () => {
-    return Model.countDocuments();
+  const countProduct = (categories_) => {
+    const query = categories_
+      ? { categories: { $in: categories_.split(",") } }
+      : {};
+    return Model.countDocuments(query);
   };
 
   return {
@@ -99,6 +105,6 @@ module.exports = (Model) => {
     findBy,
     getProducts,
     verifyCategories,
-    count,
+    countProduct,
   };
 };

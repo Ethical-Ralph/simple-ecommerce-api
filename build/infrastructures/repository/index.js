@@ -70,10 +70,15 @@ module.exports = function (Model) {
     }
   };
 
-  var getProducts = function getProducts(_ref2) {
+  var getProducts = function getProducts(_ref2, categories_) {
     var limit = _ref2.limit,
         page = _ref2.page;
-    return Model.find().limit(Number(limit)).skip(Number((page - 1) * limit)).exec();
+    var query = categories_ ? {
+      categories: {
+        $in: categories_.split(",")
+      }
+    } : {};
+    return Model.find(query).limit(Number(limit)).skip(Number((page - 1) * limit)).exec();
   };
 
   var findById = function findById(id) {
@@ -164,8 +169,13 @@ module.exports = function (Model) {
     return Model.deleteMany({}).exec();
   };
 
-  var count = function count() {
-    return Model.countDocuments();
+  var countProduct = function countProduct(categories_) {
+    var query = categories_ ? {
+      categories: {
+        $in: categories_.split(",")
+      }
+    } : {};
+    return Model.countDocuments(query);
   };
 
   return {
@@ -179,6 +189,6 @@ module.exports = function (Model) {
     findBy: findBy,
     getProducts: getProducts,
     verifyCategories: verifyCategories,
-    count: count
+    countProduct: countProduct
   };
 };
