@@ -22,7 +22,7 @@ const auth = (userRepository) => async (req, res, next) => {
 
     const decoded = jwt.verify(token, config.JWTSecret);
     const user = await userRepository.findByEmail(decoded.email);
-    if (!user) throw ECustomError.AuthorizationError("User Doesnt't Exist");
+    if (!user) throw CustomError.AuthorizationError("User Doesnt't Exist");
     req.user = user;
     next();
   } catch (error) {

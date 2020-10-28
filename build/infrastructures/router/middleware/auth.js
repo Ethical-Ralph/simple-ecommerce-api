@@ -49,7 +49,7 @@ var auth = function auth(userRepository) {
                 break;
               }
 
-              throw ECustomError.AuthorizationError("User Doesnt't Exist");
+              throw _error["default"].AuthorizationError("User Doesnt't Exist");
 
             case 9:
               req.user = user;
