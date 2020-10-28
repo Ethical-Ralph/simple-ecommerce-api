@@ -37,7 +37,7 @@ var createCategory = function createCategory(_ref) {
                 break;
               }
 
-              return _context.abrupt("return", new Error("A category with this name already exists"));
+              throw new Error("A category with this name already exists");
 
             case 7:
               _context.next = 9;

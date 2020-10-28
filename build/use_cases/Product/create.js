@@ -25,29 +25,32 @@ var createProduct = function createProduct(_ref) {
             case 0:
               _context.prev = 0;
               data = _product["default"].validateCreate(productData);
-              categories = productData.categories; // await categoryRepository.verifyCategories(categories);
-
+              categories = productData.categories;
               _context.next = 5;
-              return productRepository.add(data);
+              return categoryRepository.verifyCategories(categories);
 
             case 5:
+              _context.next = 7;
+              return productRepository.add(data);
+
+            case 7:
               product = _context.sent;
               return _context.abrupt("return", {
                 message: "Product added successfully",
                 data: product
               });
 
-            case 9:
-              _context.prev = 9;
+            case 11:
+              _context.prev = 11;
               _context.t0 = _context["catch"](0);
               throw _context.t0;
 
-            case 12:
+            case 14:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[0, 11]]);
     }));
 
     return function (_x) {

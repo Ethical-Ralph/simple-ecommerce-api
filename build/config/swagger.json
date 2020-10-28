@@ -9,7 +9,7 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "https://simple-ecommerce-mock.herokuapp.com",
+  "host": "simple-ecommerce-mock.herokuapp.com",
   "basePath": "/api",
   "securityDefinitions": {
     "Bearer": {
