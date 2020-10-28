@@ -13,15 +13,21 @@ const categoryRouter = ({ categoryRepository }) => {
   });
   const router = Router();
 
-  router
-    .route("/")
-    .get(getAllCategoryController)
-    .post(isAdmin, createCategoryController);
+  router.route("/").get(getAllCategoryController).post(
+    // isAdmin,
+    createCategoryController
+  );
 
   router
     .route("/:categoryId")
-    .patch(isAdmin, updateCategoryController)
-    .delete(isAdmin, deleteCategoryController);
+    .patch(
+      // isAdmin,
+      updateCategoryController
+    )
+    .delete(
+      // isAdmin,
+      deleteCategoryController
+    );
   return router;
 };
 

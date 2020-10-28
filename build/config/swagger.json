@@ -11,16 +11,6 @@
   },
   "host": "simple-ecommerce-mock.herokuapp.com",
   "basePath": "/api",
-  "securityDefinitions": {
-    "Bearer": {
-      "type": "apiKey",
-      "description": "Enter JWT Bearer token",
-      "in": "header",
-      "name": "Authorization",
-      "scheme": "bearer",
-      "bearerFormat": "JWT"
-    }
-  },
 
   "tags": [
     {
@@ -133,9 +123,7 @@
       },
       "post": {
         "tags": ["Products"],
-        "security": {
-          "Bearer": []
-        },
+
         "description": "Adds a new product",
         "parameters": [
           {
@@ -195,9 +183,7 @@
       "patch": {
         "tags": ["Products"],
         "description": "Updates a product",
-        "security": {
-          "Bearer": []
-        },
+
         "parameters": [
           {
             "name": "product",
@@ -226,9 +212,7 @@
       },
       "delete": {
         "tags": ["Products"],
-        "security": {
-          "Bearer": []
-        },
+
         "description": "Deletes a product",
         "produces": ["application/json"],
         "responses": {
@@ -267,9 +251,7 @@
       },
       "post": {
         "tags": ["Category"],
-        "security": {
-          "Bearer": []
-        },
+
         "description": "Adds a new category",
         "parameters": [
           {
@@ -310,9 +292,7 @@
       ],
       "patch": {
         "tags": ["Category"],
-        "security": {
-          "Bearer": []
-        },
+
         "description": "Updates a category",
         "parameters": [
           {
@@ -342,9 +322,7 @@
       },
       "delete": {
         "tags": ["Category"],
-        "security": {
-          "Bearer": []
-        },
+
         "description": "Deletes a category",
         "produces": ["application/json"],
         "responses": {
@@ -406,7 +384,7 @@
         "price": {
           "type": "number"
         },
-        "product": {
+        "description": {
           "type": "string"
         },
         "categories": {

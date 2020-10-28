@@ -20,8 +20,11 @@ var categoryRouter = function categoryRouter(_ref) {
       deleteCategoryController = _controller.deleteCategoryController;
 
   var router = (0, _express.Router)();
-  router.route("/").get(getAllCategoryController).post(_isAdmin["default"], createCategoryController);
-  router.route("/:categoryId").patch(_isAdmin["default"], updateCategoryController)["delete"](_isAdmin["default"], deleteCategoryController);
+  router.route("/").get(getAllCategoryController).post( // isAdmin,
+  createCategoryController);
+  router.route("/:categoryId").patch( // isAdmin,
+  updateCategoryController)["delete"]( // isAdmin,
+  deleteCategoryController);
   return router;
 };
 

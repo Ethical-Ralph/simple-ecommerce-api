@@ -15,13 +15,22 @@ const productRouter = ({ productRepository, categoryRepository }) => {
   });
   const router = Router();
 
-  router.route("/").get(getAllProductController).post(createProductController);
+  router.route("/").get(getAllProductController).post(
+    // isAdmin,
+    createProductController
+  );
 
   router
     .route("/:productId")
     .get(getProductController)
-    .patch(updateProductController)
-    .delete(deleteProductController);
+    .patch(
+      // isAdmin,
+      updateProductController
+    )
+    .delete(
+      // isAdmin,
+      deleteProductController
+    );
 
   return router;
 };
