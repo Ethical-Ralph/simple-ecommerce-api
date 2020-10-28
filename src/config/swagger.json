@@ -18,12 +18,12 @@
       "description": "API for users in the system"
     },
     {
-      "name": "Products",
-      "description": "API for products"
-    },
-    {
       "name": "Category",
       "description": "API for category"
+    },
+    {
+      "name": "Products",
+      "description": "API for products"
     }
   ],
   "schemes": ["http", "https"],
@@ -79,6 +79,112 @@
             "schema": {
               "$ref": "#/definitions/UserLogin"
             }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+
+    "/category": {
+      "get": {
+        "tags": ["Category"],
+        "description": "Get all category",
+        "responses": {
+          "200": {
+            "description": "category fetched successfully",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "403": {
+            "description": "You do not have necessary permissions for the resource"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Category"],
+        "description": "Adds a new category",
+        "parameters": [
+          {
+            "name": "Category",
+            "in": "body",
+            "description": "Category to be added",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Category added succcessful",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "403": {
+            "description": "You do not have necessary permissions for the resource"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/category/{categoryId}": {
+      "parameters": [
+        {
+          "name": "categoryId",
+          "in": "path",
+          "required": true,
+          "description": "ID of category to perform operation on",
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "tags": ["Category"],
+        "description": "Updates a category",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category to be updated",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Category updated succcessful",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "403": {
+            "description": "You do not have necessary permissions for the resource"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Category"],
+        "description": "Deletes a category",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Category deleted succcessful"
+          },
+          "403": {
+            "description": "You do not have necessary permissions for the resource"
           },
           "500": {
             "description": "Internal server error"
@@ -218,116 +324,6 @@
         "responses": {
           "200": {
             "description": "product deleted succcessful"
-          },
-          "403": {
-            "description": "You do not have necessary permissions for the resource"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      }
-    },
-
-    "/category": {
-      "get": {
-        "tags": ["Category"],
-        "description": "Get all category",
-
-        "responses": {
-          "200": {
-            "description": "category fetched successfully",
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
-          },
-          "403": {
-            "description": "You do not have necessary permissions for the resource"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      },
-      "post": {
-        "tags": ["Category"],
-
-        "description": "Adds a new category",
-        "parameters": [
-          {
-            "name": "Category",
-            "in": "body",
-            "description": "Category to be added",
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Category added succcessful",
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
-          },
-          "403": {
-            "description": "You do not have necessary permissions for the resource"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      }
-    },
-    "/category/{categoryId}": {
-      "parameters": [
-        {
-          "name": "categoryId",
-          "in": "path",
-          "required": true,
-          "description": "ID of category to perform operation on",
-          "type": "string"
-        }
-      ],
-      "patch": {
-        "tags": ["Category"],
-
-        "description": "Updates a category",
-        "parameters": [
-          {
-            "name": "category",
-            "in": "body",
-            "description": "Category to be updated",
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
-          }
-        ],
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Category updated succcessful",
-            "schema": {
-              "$ref": "#/definitions/Category"
-            }
-          },
-          "403": {
-            "description": "You do not have necessary permissions for the resource"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      },
-      "delete": {
-        "tags": ["Category"],
-
-        "description": "Deletes a category",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Category deleted succcessful"
           },
           "403": {
             "description": "You do not have necessary permissions for the resource"
