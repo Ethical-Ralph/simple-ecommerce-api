@@ -22,6 +22,7 @@ functionalities
   **Products**
 
   - Pagination
+  - filtering
 
 ## Authentication and Session Management
 
