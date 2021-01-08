@@ -2,6 +2,7 @@ const http = require("http");
 const https = require("https");
 
 const getFile = (url, cb) => {
+let result;
   var response_data = "";
 
 if(!url){
@@ -18,7 +19,7 @@ url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
         response_data += data;
       });
       res.on("end", function () {
-      return   parse(response_data);
+      result = parse(response_data);
       });
     })
     .on("error", (e) => {
@@ -31,13 +32,14 @@ url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
         response_data += data;
       });
       res.on("end", function () {
-     return    parse(response_data);
+     result = parse(response_data);
       });
     })
     .on("error", (e) => {
       throw new Error(e)
     });
    }
+return result
 };
 
 const vParser = (csv) => {
