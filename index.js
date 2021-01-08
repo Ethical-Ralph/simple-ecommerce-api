@@ -11,8 +11,13 @@ app.get("/", (req,res) =>
 
 app.post("/convert", (req,res) => {
   const { csv: { url, select_fields }} = req.body
-  const result = convert(url)
-  res.json(result)
+  try {
+     const result = convert(url)
+      res.json(result)
+   } 
+catch(e) {
+res.json({errors:e})
+ }
 }
 )
 
