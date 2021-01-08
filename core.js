@@ -8,7 +8,7 @@ if(!url){
 url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
 }
 
-  if(url.startWith("https://")) {
+  if(url.startsWith("https://")) {
   https
     .get(url, (res) => {
      console.log(res.headers)
