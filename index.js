@@ -1,5 +1,5 @@
 const express = require("express");
-const convert = require("./Newinters");
+const convert = require("./core");
 
 const app = express()
 
