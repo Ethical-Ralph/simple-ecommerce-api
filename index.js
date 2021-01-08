@@ -19,7 +19,10 @@ const result = convert()
       res.json(result)
    } 
 catch(e) {
-res.json({errors:e})
+res.json({errors: {
+    name:e.name,
+    message: e.message
+})
  }
 }
 )
