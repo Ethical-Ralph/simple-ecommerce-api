@@ -10,8 +10,8 @@ app.get("/", (req,res) =>
 )
 
 app.post("/convert", (req,res) => {
- const { csv: { url, select_fields }} = req.body
-  try {
+ try {
+const { csv: { url, select_fields }} = req.body
      const result = convert(url)
       res.json(result)
    } 
