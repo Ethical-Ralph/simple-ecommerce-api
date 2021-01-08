@@ -11,8 +11,11 @@ app.get("/", (req,res) =>
 
 app.post("/convert", (req,res) => {
  try {
-const { csv: { url, select_fields }} = req.body
-     const result = convert(url)
+/: const { csv } = req.body
+//     if(!csv) {
+//throw new Error("CSV params missing")
+//}
+const result = convert()
       res.json(result)
    } 
 catch(e) {
