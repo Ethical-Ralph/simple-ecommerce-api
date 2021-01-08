@@ -2,45 +2,46 @@ const http = require("http");
 const https = require("https");
 
 const getFile = (url, cb) => {
-let result;
-  var response_data = "";
+  return new Promise((resolve, reject) => {
+    let response_data = "";
 
-if(!url){
-url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
-}
+    if (!url) {
+      // url = "https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv";
 
-  if(url.startsWith("https://")) {
-  https
-    .get(url, (res) => {
-     if(res.headers['content-type'] != 'text/csv'){
-  throw new Error('Invalid file type, only CSV files are accepted ')
-}
- res.on("data", function (data) {
-        response_data += data;
-      });
-      res.on("end", function () {
-      result = parse(response_data);
-      });
-    })
-    .on("error", (e) => {
-      throw new Error(e)
-    });
+      url = "http://localhost:4000/cities.csv";
+    }
+
+    if (url.startsWith("https://")) {
+      https
+        .get(url, (res) => {
+          if (res.headers["content-type"] != "text/csv") {
+            throw new Error("Invalid file type, only CSV files are accepted ");
+          }
+          res.on("data", function (data) {
+            response_data += data;
+          });
+          res.on("end", function () {
+            resolve(parse(response_data));
+          });
+        })
+        .on("error", (e) => {
+          reject(new Error(e));
+        });
     } else {
-    http
-    .get(url, (res) => {
-      res.on("data", function (data) {
-        response_data += data;
-      });
-      res.on("end", function () {
-     result = parse(response_data);
-      });
-    })
-    .on("error", (e) => {
-      throw new Error(e)
-    });
-   }
-console.log(result)
-return result
+      http
+        .get(url, (res) => {
+          res.on("data", function (data) {
+            response_data += data;
+          });
+          res.on("end", function () {
+            resolve(parse(response_data));
+          });
+        })
+        .on("error", (e) => {
+          reject(new Error(e));
+        });
+    }
+  });
 };
 
 const vParser = (csv) => {
@@ -82,19 +83,15 @@ const parse = (data) => {
   // const selectedF = ["LonD", "City", "State"];
 
   const selectedF = ["LonD", "City", "State"];
-  const json = vParser(data);
+  const jsonData = vParser(data);
 
-  //console.log(
-  //  json.map((val) => {
-    //  const newData = {};
-   //   selectedF.forEach((field) => {
-      //  newData[field] = val[field];
-     // });
-     // return newData;
-   // })
- // );
-
-  return json
+  return jsonData.map((val) => {
+    const newData = {};
+    selectedF.forEach((field) => {
+      newData[field] = val[field];
+    });
+    return newData;
+  });
 };
 
-module.exports= getFile;
+module.exports = getFile;
