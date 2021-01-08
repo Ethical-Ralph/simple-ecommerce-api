@@ -3,7 +3,7 @@ const https = require("https");
 
 const getFile = (url, cb) => {
   var response_data = "";
-  if(url.startWith("https://") {
+  if(url.startWith("https://")) {
   https
     .get("https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv", (res) => {
      console.log(res.headers)
