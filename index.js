@@ -16,7 +16,7 @@ app.get("/convert", (req,res) => {
 //throw new Error("CSV params missing")
 //}
 const result = convert()
-      res.json({data: result})
+   return    res.json({data: result})
    } 
 catch(e) {
    res.json({errors: {
