@@ -39,6 +39,7 @@ url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
       throw new Error(e)
     });
    }
+console.log(result)
 return result
 };
 
