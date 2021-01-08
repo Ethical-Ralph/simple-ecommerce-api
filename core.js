@@ -11,7 +11,7 @@ url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
   if(url.startsWith("https://")) {
   https
     .get(url, (res) => {
-     if(res.headers['content-type'] != 'text/csv) {
+     if(res.headers['content-type'] != 'text/csv'){
   throw new Error('Invalid file type, only CSV files are accepted ')
 }
  res.on("data", function (data) {
