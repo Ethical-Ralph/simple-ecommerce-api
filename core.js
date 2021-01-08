@@ -81,15 +81,15 @@ const parse = (data) => {
   const selectedF = ["LonD", "City", "State"];
   const json = vParser(data);
 
-  console.log(
-    json.map((val) => {
-      const newData = {};
-      selectedF.forEach((field) => {
-        newData[field] = val[field];
-      });
-      return newData;
-    })
-  );
+  //console.log(
+  //  json.map((val) => {
+    //  const newData = {};
+   //   selectedF.forEach((field) => {
+      //  newData[field] = val[field];
+     // });
+     // return newData;
+   // })
+ // );
 
   return json
 };
