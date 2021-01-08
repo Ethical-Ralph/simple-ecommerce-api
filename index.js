@@ -9,7 +9,7 @@ app.get("/", (req,res) =>
    res.end("welcome to my CSV to JSON app")
 )
 
-app.post("/convert", (req,res) => {
+app.get("/convert", (req,res) => {
  try {
 // const { csv } = req.body
 //     if(!csv) {
