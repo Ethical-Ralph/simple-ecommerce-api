@@ -3,9 +3,14 @@ const https = require("https");
 
 const getFile = (url, cb) => {
   var response_data = "";
+
+if(!url){
+url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
+}
+
   if(url.startWith("https://")) {
   https
-    .get("https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv", (res) => {
+    .get(url, (res) => {
      console.log(res.headers)
  res.on("data", function (data) {
         response_data += data;
@@ -19,7 +24,7 @@ const getFile = (url, cb) => {
     });
     } else {
     http
-    .get("https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv", (res) => {
+    .get(url, (res) => {
       res.on("data", function (data) {
         response_data += data;
       });
