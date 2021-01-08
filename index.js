@@ -6,7 +6,7 @@ const app = express()
 
 app.use(express.json())
 app.get("/", (req,res) => 
-   res.end("welcome to my CSV to JSON app”)
+   res.end("welcome to my CSV to JSON app")
 )
 
 app.post("/convert", (req,res) => {
