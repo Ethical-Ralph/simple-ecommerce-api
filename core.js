@@ -92,4 +92,4 @@ const parse = (data) => {
   return json
 };
 
-module.export = getFile;
+module.exports= getFile;
