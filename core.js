@@ -18,7 +18,7 @@ url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
         response_data += data;
       });
       res.on("end", function () {
-        parse(response_data);
+      return   parse(response_data);
       });
     })
     .on("error", (e) => {
@@ -31,7 +31,7 @@ url="https://people.sc.fsu.edu/~jburkardt/data/csv/cities.csv"
         response_data += data;
       });
       res.on("end", function () {
-        parse(response_data);
+     return    parse(response_data);
       });
     })
     .on("error", (e) => {
